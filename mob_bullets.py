@@ -16,7 +16,7 @@ class Mob_bullet(Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.bottom = y
-        self.mob_bullet_speed = -15
+        self.mob_bullet_speed = -20
 
     def update(self):
         self.rect.y -= self.mob_bullet_speed

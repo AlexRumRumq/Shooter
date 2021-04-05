@@ -9,12 +9,12 @@ class Bullet(Sprite):
         self.screen = my_game.screen
 
         self.screen_rect = my_game.screen.get_rect()
-        self.image = pygame.Surface((67, 45))
-        self.image.fill((254, 189, 255))
+        self.image = pygame.Surface((20, 50))
+        self.image.fill((0, 255, 0))
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.bottom = y
-        self.bullet_speed = -30
+        self.bullet_speed = -15
 
     def update(self):
         self.rect.y += self.bullet_speed
