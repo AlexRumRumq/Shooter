@@ -29,6 +29,7 @@ class Game:
 
         self.sound1 = pygame.mixer.Sound('shoot.wav')
         self.sound2 = pygame.mixer.Sound('shoot_in_player.wav')
+        self.sound3 = pygame.mixer.Sound('shoot_in_mobs.wav')
 
         # Создание экземпляра игрока
         self.player = Player(self)
@@ -182,6 +183,7 @@ class Game:
         # и вызываем метод отрисовки надписи "Игра окончена!!!"
         if hits_1:
             self.sound2.play()
+            self.sound1.fadeout(1000)
             self.life_player -= 1
             if self.life_player == 0:
                 self.running = False
@@ -191,14 +193,20 @@ class Game:
         # если было, то вычитаем жизнь, и если жизней 0, то
         # удаляем моба
         if hits_2:
+            self.sound3.play()
+            self.sound1.fadeout(1000)
             self.life_mob -= 1
             if self.life_mob <= 0:
                 self.mob.kill()
         if hits_3:
+            self.sound3.play()
+            self.sound1.fadeout(1000)
             self.life_mob_1 -= 1
             if self.life_mob_1 <= 0:
                 self.mob_1.kill()
         if hits_4:
+            self.sound3.play()
+            self.sound1.fadeout(1000)
             self.life_mob_2 -= 1
             if self.life_mob_2 <= 0:
                 self.mob_2.kill()
@@ -253,6 +261,7 @@ class Game:
                         self.player.moving_down = True
                     if event.key == pygame.K_SPACE:
                         self.sound1.play()
+                        self.sound1.fadeout(1000)
                         self.shoot()
                         self.shoot_2()
                         self.shoot_3()
