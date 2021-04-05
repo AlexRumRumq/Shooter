@@ -13,7 +13,7 @@ class Player(Sprite):
 
         # Создаем поверхность зеленого цвета и получаем прямоугольник
         self.image = pygame.image.load('image_player.jpg')
-        self.image = pygame.transform.scale(self.image, (100, 100))
+        self.image = pygame.transform.scale(self.image, (150, 150))
         self.image.set_colorkey((255, 255, 255))
         self.image.set_alpha(500)
         self.rect = self.image.get_rect()

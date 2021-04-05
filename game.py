@@ -30,6 +30,8 @@ class Game:
         self.sound1 = pygame.mixer.Sound('shoot.wav')
         self.sound2 = pygame.mixer.Sound('shoot_in_player.wav')
         self.sound3 = pygame.mixer.Sound('shoot_in_mobs.wav')
+        self.sound4 = pygame.mixer.Sound('win.wav')
+        self.sound5 = pygame.mixer.Sound('lose.wav')
 
         # Создание экземпляра игрока
         self.player = Player(self)
@@ -58,9 +60,9 @@ class Game:
 
         # Жизни игрока, жизни всех мобов.
         self.life_player = 50
-        self.life_mob = 75
-        self.life_mob_1 = 50
-        self.life_mob_2 = 50
+        self.life_mob = 1
+        self.life_mob_1 = 1
+        self.life_mob_2 = 1
 
         # Переменная для создания игрового цикла
         # Используем не sys.exit(), потому что нам нужно показать, кто победил.
@@ -125,6 +127,7 @@ class Game:
 
     def end_game(self):
         """Метод для вывода на экран после завершения игры фразы "Игра окончена!!!" """
+        self.sound5.play()
         self.screen.fill(self.BLACK)
         f1 = pygame.font.Font(None, 150)
         text1 = f1.render('ИГРА ОКОНЧЕНА!!!', True,
@@ -132,11 +135,12 @@ class Game:
         self.screen.blit(text1, (self.screen.get_rect().width / 2 - 500,
                                  self.screen.get_rect().height / 2 - 50))
         pygame.display.flip()
-        # Задержка надписи на 25000 милисекунд
-        pygame.time.delay(2500)
+        # Задержка надписи на 3000 милисекунд
+        pygame.time.delay(3000)
 
     def win_game(self):
         """Метод для вывода на экран после завершения игры фразы "Ты победил!!!" """
+        self.sound4.play()
         self.screen.fill(self.BLACK)
         f1 = pygame.font.Font(None, 150)
         text1 = f1.render('Ты победил!!!', True,
@@ -144,8 +148,8 @@ class Game:
         self.screen.blit(text1, (self.screen.get_rect().width / 2 - 350,
                                  self.screen.get_rect().height / 2 - 50))
         pygame.display.flip()
-        # Задержка надписи на 2500 милисекунд
-        pygame.time.delay(2500)
+        # Задержка надписи на 3000 милисекунд
+        pygame.time.delay(3000)
 
     def update_screen(self):
         """Метод для всех обновлений и отрисовок всех элементов"""
