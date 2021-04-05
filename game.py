@@ -27,6 +27,9 @@ class Game:
         self.fps = 60
         self.BLACK = (0, 0, 0)
 
+        self.sound1 = pygame.mixer.Sound('shoot.wav')
+        self.sound2 = pygame.mixer.Sound('shoot_in_player.wav')
+
         # Создание экземпляра игрока
         self.player = Player(self)
 
@@ -175,6 +178,7 @@ class Game:
         # выходим из цикла с помощью self.running = False
         # и вызываем метод отрисовки надписи "Игра окончена!!!"
         if hits_1:
+            self.sound2.play()
             self.life_player -= 1
             if self.life_player == 0:
                 self.running = False
@@ -237,6 +241,7 @@ class Game:
                     if event.key == pygame.K_s:
                         self.player.moving_down = True
                     if event.key == pygame.K_SPACE:
+                        self.sound1.play()
                         self.shoot()
                         self.shoot_2()
                         self.shoot_3()

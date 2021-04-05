@@ -15,6 +15,7 @@ class Player(Sprite):
         self.image = pygame.image.load('image_player.jpg')
         self.image = pygame.transform.scale(self.image, (100, 100))
         self.image.set_colorkey((255, 255, 255))
+        self.image.set_alpha(500)
         self.rect = self.image.get_rect()
 
         # Каждый новый корабль появляется у нижнего края экрана по середине
