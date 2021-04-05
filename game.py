@@ -57,9 +57,9 @@ class Game:
 
         # Жизни игрока, жизни всех мобов.
         self.life_player = 50
-        self.life_mob = 15
-        self.life_mob_1 = 10
-        self.life_mob_2 = 10
+        self.life_mob = 75
+        self.life_mob_1 = 50
+        self.life_mob_2 = 50
 
         # Переменная для создания игрового цикла
         # Используем не sys.exit(), потому что нам нужно показать, кто победил.
@@ -173,6 +173,9 @@ class Game:
         hits_6 = pygame.sprite.spritecollide(self.player, self.mobs_1, True)
         hits_7 = pygame.sprite.spritecollide(self.player, self.mobs_2, True)
 
+        hits_8 = pygame.sprite.groupcollide(self.mobs_1, self.mob_bullets, False, True)
+        hits_9 = pygame.sprite.groupcollide(self.mobs_2, self.mob_bullets, False, True)
+
         # проверка было ли столкновение hits_1
         # если было, то вычитаем жизнь, и если жизней 0, то
         # выходим из цикла с помощью self.running = False
@@ -210,6 +213,14 @@ class Game:
         if self.life_mob <= 0 and self.life_mob_1 <= 0 and self.life_mob_2 <= 0:
             self.running = False
             self.win_game()
+
+        # Если моб 1 попадает в моб 2 и наоборот - то
+        # жизни моба, в которог попали увеличатся на 1
+        if hits_8:
+            self.life_mob_1 += 1
+
+        if hits_9:
+            self.life_mob_2 += 1
 
         self.screen.fill(self.BLACK)
         self.bullets.draw(self.screen)
