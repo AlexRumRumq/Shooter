@@ -11,8 +11,8 @@ class Mob_bullet(Sprite):
         self.screen = my_game.screen
         self.life_player = my_game.life_player
         self.screen_rect = my_game.screen.get_rect()
-        self.image = pygame.Surface((67, 45))
-        self.image.fill((200, 200, 200))
+        self.image = pygame.Surface((100, 10))
+        self.image.fill((255, 0, 200))
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.bottom = y

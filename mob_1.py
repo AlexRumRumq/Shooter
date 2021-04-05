@@ -14,6 +14,7 @@ class Mob_1(Sprite):
         # Создаем поверхность зеленого цвета и получаем прямоугольник
         self.image = pygame.image.load('mob.png')
         self.image = pygame.transform.scale(self.image, (100, 100))
+        self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
 
         # Каждый новый корабль появляется у нижнего края экрана по середине

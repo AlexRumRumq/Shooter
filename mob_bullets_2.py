@@ -9,8 +9,8 @@ class Mob_bullet_2(Sprite):
         self.screen = my_game.screen
 
         self.screen_rect = my_game.screen.get_rect()
-        self.image = pygame.Surface((67, 45))
-        self.image.fill((200, 200, 200))
+        self.image = pygame.Surface((10, 100))
+        self.image.fill((255, 0, 255))
         self.rect = self.image.get_rect()
         self.rect.midleft = x
         self.rect.midleft = y
